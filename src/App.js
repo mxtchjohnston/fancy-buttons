@@ -7,6 +7,7 @@ import TextRepeaterButton from './components/TextRepeaterButton';
 
 function App() {
   const [light, setLight] = useState(false);
+  const handleClick = () => setLight(!light);
   const dark = light ? '' : 'dark';
   return (
     <div className={`App ${dark}`}>
@@ -14,7 +15,7 @@ function App() {
       <section>
         <AngryButton />
         <CounterButton />
-        <LightSwitchButton light={light} setLight={setLight}/>
+        <LightSwitchButton light={light} handleClick={handleClick}/>
         <TextRepeaterButton />
       </section>
     </div>
