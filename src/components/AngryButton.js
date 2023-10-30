@@ -1,8 +1,14 @@
-function AngryButton(){
+import { useState } from "react";
+
+function AngryButton(props){
+  const [anger, setAnger] = useState(0);
+
+  const handleClick = amt => () => anger < 1 ? setAnger(amt + anger) : setAnger(0);
+
   return (
-    <button className="AngryButton">
-      {/* If you have NOT reached the maximum */}<span>Don't click me too much! </span>
-      {/* If you HAVE reached the maximum */}<span>Rawr!</span>
+    <button style={{ backgroundColor: `rgba(255,0,0,${anger})`}} className="AngryButton" onClick={handleClick(0.1)}>
+      {anger < 1 && <span>Don't click me too much! </span>}
+      {anger > 1 && <span>Rawr!</span>}
     </button>
   );
 }
